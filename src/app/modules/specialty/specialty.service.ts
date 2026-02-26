@@ -1,7 +1,7 @@
 // --> this is use for bussiness logic.
 // --> send, delete, update logic here. 
 
-import { Specialty } from "../../generated/prisma/client";
+import { Specialty } from "../../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 
 

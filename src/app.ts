@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import { IndexRouter } from "./route";
+import { IndexRouter } from "./app/route";
 
 const app: Application = express()
 app.use(express.json())
