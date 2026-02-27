@@ -14,7 +14,7 @@ interface responsiveData {
 
 const responseMessage = (res: Response, responseData: responsiveData) => {
     const { httpStatusCode, success, message, data } = responseData
-    res.send(httpStatusCode).json({
+    res.status(httpStatusCode).json({
         success,
         message,
         data
