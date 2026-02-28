@@ -21,6 +21,7 @@ const logInAllUser = catchAsync(
     async (req: Request, res: Response) => {
         const payload = req.body
         const result = await AuthService.logInAllUser(payload)
+        console.log(result);
 
         responseMessage(res, {
             httpStatusCode: 201,

@@ -10,9 +10,10 @@ model User {
     updatedAt       DateTime  @updatedAt
     isDeleted       Boolean   @default(false) // extra
     deletedAt       DateTime? // extra
-    needsPassChange Boolean  @default(false)
+    needsPassChange Boolean   @default(false)
     sessions        Session[]
     accounts        Account[]
+    patient         Patient?
 
     @@unique([email])
     @@map("user")
