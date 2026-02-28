@@ -1,4 +1,3 @@
-import { error } from "node:console";
 import auth from "../../lib/auth";
 import { Status } from "../../../generate/prisma/enums";
 import { prisma } from "../../lib/prisma";
@@ -9,16 +8,29 @@ const registerPatient = async (payload: IRegister) => {
         body: { name, email, password },
     });
 
-    if (data) {
-        // const patient = await prisma.patient.create({
-        //     data: data
-        // })
-    }
-
     if (!data.user) {
         throw new Error('register or sign-up failed')
     }
-    return data
+
+    try {
+        const patient = await prisma.$transaction(async (tx) => {
+            const patientTx = await tx.patient.create({
+                data: {
+                    userId: data.user.id,
+                    name: data.user.name,
+                    email: data.user.email
+                }
+            })
+            return patientTx
+        })
+
+        return { ...data, patient }
+    } catch (error) {
+        await prisma.user.delete({
+            where: { id: data.user.id }
+        })
+        throw new Error('Something Wrong')
+    }
 }
 
 const logInAllUser = async (payload: ILogInAllUser) => {

@@ -1,7 +1,6 @@
-import { betterAuth, boolean } from "better-auth";
+import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
-import { role } from "better-auth/plugins";
 import { Role, Status } from "../../generate/prisma/enums";
 // If your Prisma file is located elsewhere, you can change the path
 
@@ -40,7 +39,7 @@ const auth = betterAuth({
                 defaultValue: false
             }
 
-        }
+        },
     },
 });
 
