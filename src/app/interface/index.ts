@@ -1,4 +1,4 @@
-import { Gender } from "../../generate/prisma/enums"
+import { Gender, Role } from "../../generate/prisma/enums"
 
 export interface IRegister {
     name: string,
@@ -23,10 +23,11 @@ export interface ICreateDocotor {
         registrationNumber: string,
         experience: number,
         specialization: string,
-        appointmentFee: number
-        designation: string
-        averageRating: number
-        qualification: string
+        appointmentFee: number,
+        designation: string,
+        averageRating: number,
+        qualification: string,
+        role: Role
     },
-    specialties: []
+    specialties: string[]
 }

@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import { IndexRouter } from "./app/route";
 import { notFound } from "./app/middleware/notFound";
+import { globalError } from "./app/middleware/globalError";
 
 const app: Application = express()
 app.use(express.json())
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.use(notFound)
+app.use(globalError)
 
 
 export default app
