@@ -11,6 +11,9 @@ export interface ILogInAllUser {
     password: string
 }
 
+
+
+
 export interface ICreateDocotor {
     password: string,
     doctor: {

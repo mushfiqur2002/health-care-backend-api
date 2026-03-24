@@ -55,6 +55,28 @@ const getSpecialtyById = catchAsync(
     }
 )
 
+const updateSpecialty = catchAsync(
+    async (req: Request, res: Response) => {
+        const { id } = req.params
+        const payload = req.body
+        const result = await SpecialtyService.updateSpecialty(id, payload) as string | undefined
+        if (!result) {
+            return responseMessage(res, {
+                httpStatusCode: status.NOT_FOUND,
+                success: false,
+                message: 'delete specialty unsucessfully'
+            })
+        }
+
+        responseMessage(res, {
+            httpStatusCode: status.OK,
+            success: true,
+            message: 'update specialty successfully',
+            data: result
+        })
+    }
+)
+
 const deleteSpecialtyById = catchAsync(
     async (req: Request, res: Response) => {
         const { id } = req.params
@@ -80,5 +102,6 @@ export const SpecialtyController = {
     createSpecialty,
     getAllSpecialty,
     getSpecialtyById,
+    updateSpecialty,
     deleteSpecialtyById
 }

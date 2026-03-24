@@ -4,7 +4,7 @@ import { AuthService } from "./auth.service";
 import responseMessage from "../../shared/responseMessage";
 import status from "http-status";
 
-const registerPatient = catchAsync(
+const AuthRegistration = catchAsync(
     async (req: Request, res: Response) => {
         const payload = req.body
         const result = await AuthService.registerPatient(payload)
@@ -18,7 +18,7 @@ const registerPatient = catchAsync(
     }
 )
 
-const logInAllUser = catchAsync(
+const AuthLogIn = catchAsync(
     async (req: Request, res: Response) => {
         const payload = req.body
         const result = await AuthService.logInAllUser(payload)
@@ -34,6 +34,6 @@ const logInAllUser = catchAsync(
 )
 
 export const AuthController = {
-    registerPatient,
-    logInAllUser
+    AuthRegistration,
+    AuthLogIn
 }
