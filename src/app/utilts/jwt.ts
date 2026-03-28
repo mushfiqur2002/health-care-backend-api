@@ -10,7 +10,7 @@ const verifyToken = (token: string, secret: string) => {
         const decodeed = jwt.verify(token, secret) as JwtPayload
         return {
             success: true,
-            data: decodeed
+            data: decodeed,
         }
     } catch (error: any) {
         return {
@@ -19,4 +19,9 @@ const verifyToken = (token: string, secret: string) => {
             error
         }
     }
+}
+
+export const JWTToken = {
+    createToken,
+    verifyToken
 }
